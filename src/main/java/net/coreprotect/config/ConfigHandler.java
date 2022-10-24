@@ -229,8 +229,8 @@ public class ConfigHandler extends Queue {
             config.setJdbcUrl("jdbc:mysql://" + ConfigHandler.host + ":" + ConfigHandler.port + "/" + ConfigHandler.database);
             config.setUsername(ConfigHandler.username);
             config.setPassword(ConfigHandler.password);
-            config.setMaxLifetime(300000);
-            config.setKeepaliveTime(60000);
+            config.setMaxLifetime(200000);
+            config.setKeepaliveTime(50000);
             config.addDataSourceProperty("characterEncoding", "UTF-8");
             config.addDataSourceProperty("connectionTimeout", "10000");
             /* https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration */
@@ -243,6 +243,7 @@ public class ConfigHandler extends Queue {
             config.addDataSourceProperty("rewriteBatchedStatements", "true");
             config.addDataSourceProperty("cacheServerConfiguration", "true");
             config.addDataSourceProperty("maintainTimeStats", "false");
+            config.addDataSourceProperty("autoReconnect", "true");
             /* Disable SSL to suppress the unverified server identity warning */
             config.addDataSourceProperty("allowPublicKeyRetrieval", "true");
             config.addDataSourceProperty("useSSL", "false");
